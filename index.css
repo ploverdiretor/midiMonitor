@@ -1,0 +1,41 @@
+body { 
+  font-family: monospace; 
+  margin: 5px;  
+  width:100%; 
+  font-size: 12px;
+}
+/*-------------PC表示-------------*/
+.field {
+  display:flex;
+  justify-content:start;
+  flex-direction: row;
+}
+/*----------モバイル表示-----------*/
+@media screen and (max-width: 960px){
+    .field{
+        flex-direction: column;/*flexアイテムを縦並びに変更*/
+    }
+}
+/*----------flexアイテム-----------*/
+.field01{
+  width:470px; 
+  margin: 5px;
+}
+
+.midi-status { 
+  font-weight: bold; 
+}
+.midi-log { 
+  margin-top: 10px; 
+  padding: 5px; 
+  border: 1px solid #ccc; 
+  height: 500px; 
+  overflow-y: scroll; 
+  background-color: #f9f9f9; 
+  width:460px;
+}
+.log-message { 
+  padding: 3px 0; 
+  border-bottom: 1px solid #eee; 
+  font-size: 12px;
+}
