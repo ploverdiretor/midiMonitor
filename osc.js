@@ -1,4 +1,4 @@
-window.addEventListener("load", async ()=>{
+
   /*--------------------------オシレーター-------------------------*/
   const audioctx = new AudioContext();
   var osc = []
@@ -13,7 +13,7 @@ window.addEventListener("load", async ()=>{
 
   /*-----------------------------音量------------------------------*/
   const master = new GainNode(audioctx);
-
+  
   /*-----------------------------接続------------------------------*/
   osc[0].connect(gain[0]).connect(master).connect(audioctx.destination);
   for (let i=1;i<16;i++){
@@ -23,10 +23,16 @@ window.addEventListener("load", async ()=>{
   audioctx.suspend();
   for (let i=0;i<16;i++){
     osc[i].start();
-    SetupWave(i);
   }
-//  audioctx.resume();
-
+  document.getElementById("stop").addEventListener("click", ()=>{
+    audioctx.suspend();
+  });
+  document.getElementById("play").addEventListener("click", ()=>{
+      for (let i=0;i<16;i++){
+          SetupWave(i);
+      }
+      audioctx.resume();
+  });
   for(let i=1;i<8;++i){
     document.getElementById("imag"+i).addEventListener("input", ()=>{
       Setup()
@@ -36,16 +42,13 @@ window.addEventListener("load", async ()=>{
     });
   }
   document.getElementById("master").addEventListener("input", Setup);
-/*  for (let i=0;i<16;i++){
-    const textKey = 'key'+i;
-    const textFreqVal='freq'+i+'val';
+  for (let i=0;i<16;i++){
     osc[i].frequency.value = voiceFreq[i];
-    document.getElementById(textFreqVal).innerHTML= voiceFreq[i];
-  }*/
+  }
   Setup();
-/*  for (let j=0;j<16;j++){
+  for (let j=0;j<16;j++){
     SetupWave(j);
-  }*/
+  }
   audioctx.resume();
   /*-----------------------------セットアップ------------------------------*/
   function Setup(){
@@ -70,4 +73,4 @@ window.addEventListener("load", async ()=>{
     osc[num].setPeriodicWave(waveTable);
   }
 
-})
+

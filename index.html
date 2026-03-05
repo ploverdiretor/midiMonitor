@@ -17,7 +17,7 @@
             <br>
             <hr width="100%" align="left">
             <h3>OSC Assigner:</h3>
-            <table border="1"  id="assigner">
+           <table border="1"  id="assigner">
                 <tr>
                     <td align="center" width="6.25%">0</td><td align="center" width="6.25%">1</td><td align="center" width="6.25%">2</td><td align="center" width="6.25%">3</td>
                     <td align="center" width="6.25%">4</td><td align="center" width="6.25%">5</td><td align="center" width="6.25%">6</td><td align="center" width="6.25%">7</td>
@@ -48,10 +48,19 @@
         </div>
         <div class="field01">
             <table>
-            <tr><th>Master</th><td><input type="range" id="master" min="0" max="1" step="0.01" value="0.2"/></td><td id="masterval"></td></tr>
+                <tr><th>Master</th><td><input type="range" id="master" min="0" max="1" step="0.01" value="0.2"/></td><td id="masterval"></td></tr>
             </table>
-            
-
+            <table border="0"  width="10%">
+                <tr><th>Harmonics</th><th>imag</th></tr>
+                <tr><th>1</th><td><input type="range" min="0" max="1" step="0.01" id="imag1" value="1"/></td><td id="imag1val"></td></tr>
+                <tr><th>2</th><td><input type="range" min="0" max="1" step="0.01" id="imag2" value="0.5"/></td><td id="imag2val"></td></tr>
+                <tr><th>3</th><td><input type="range" min="0" max="1" step="0.01" id="imag3" value="0"/></td><td id="imag3val"></td></tr>
+                <tr><th>4</th><td><input type="range" min="0" max="1" step="0.01" id="imag4" value="0"/></td><td id="imag4val"></td></tr>
+                <tr><th>5</th><td><input type="range" min="0" max="1" step="0.01" id="imag5" value="0"/></td><td id="imag5val"></td></tr>
+                <tr><th>6</th><td><input type="range" min="0" max="1" step="0.01" id="imag6" value="0"/></td><td id="imag6val"></td></tr>
+                <tr><th>7</th><td><input type="range" min="0" max="1" step="0.01" id="imag7" value="0"/></td><td id="imag7val"></td></tr>
+            </table>
+            <button id="play">Play</button> <button id="stop">Stop</button>
         </div>
     </div>
     <script src="main.js"></script>
