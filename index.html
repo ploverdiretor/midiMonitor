@@ -16,8 +16,12 @@
             <div id="midi-log" class="midi-log"></div>
             <br>
             <hr width="100%" align="left">
-            <h3>OSC Assigner:</h3>
-           <table border="1"  id="assigner">
+            <table>
+                <tr>
+                    <td><h3>OSC Assigner:</h3></td><td><button id="play">Play</button><button id="stop">Stop</button></td>
+                </tr>
+            </table>
+            <table border="1"  id="assigner">
                 <tr>
                     <td align="center" width="6.25%">0</td><td align="center" width="6.25%">1</td><td align="center" width="6.25%">2</td><td align="center" width="6.25%">3</td>
                     <td align="center" width="6.25%">4</td><td align="center" width="6.25%">5</td><td align="center" width="6.25%">6</td><td align="center" width="6.25%">7</td>
@@ -46,11 +50,10 @@
             <br>
             <hr width="100%" align="left">
         </div>
-        <div class="field01">
-            <table>
-                <tr><th>Master</th><td><input type="range" id="master" min="0" max="1" step="0.01" value="0.2"/></td><td id="masterval"></td></tr>
-            </table>
+        <div class="field02">
             <table border="0"  width="10%">
+                <tr><th>Master</th><td><input type="range" id="master" min="0" max="1" step="0.01" value="0.2"/></td><td id="masterval"></td></tr>
+                <tr><th><br></th><td></td><td></td></tr>          
                 <tr><th>Harmonics</th><th>imag</th></tr>
                 <tr><th>1</th><td><input type="range" min="0" max="1" step="0.01" id="imag1" value="1"/></td><td id="imag1val"></td></tr>
                 <tr><th>2</th><td><input type="range" min="0" max="1" step="0.01" id="imag2" value="0.5"/></td><td id="imag2val"></td></tr>
@@ -60,7 +63,25 @@
                 <tr><th>6</th><td><input type="range" min="0" max="1" step="0.01" id="imag6" value="0"/></td><td id="imag6val"></td></tr>
                 <tr><th>7</th><td><input type="range" min="0" max="1" step="0.01" id="imag7" value="0"/></td><td id="imag7val"></td></tr>
             </table>
-            <button id="play">Play</button> <button id="stop">Stop</button>
+            <br>
+            <table>
+                <tr><th>Type</th><td>
+                    <select id="type">
+                        <option value="sine">Sine</option>
+                        <option value="square">Square</option>
+                        <option value="sawtooth" checked>SawTooth</option>
+                        <option value="triangle">Triangle</option>
+                    </select>
+                </td></tr>
+            </table>
+            <table>
+                <tr><th>Type</th><td><select id="typeFilter"><option>LPF</option><option>HPF</option><option>BPF</optioin>
+                <option>LowShelf</option><option>HighShelf</option><option>Peaking</option><option>Notch</option><option>AllPass</option>
+                </select></td></tr>
+                <tr><th>Freq</th><td><input type="range" id="freqF" min="100" max="20000" value="5000"/></td><td id="freqvalFilter"></td></tr>
+                <tr><th>Q</th><td><input type="range" id="qF" min="0" max="50" step="0.1" value="5"/></td><td id="qvalFilter"></td></tr>
+                <tr><th>Gain</th><td><input type="range" id="gainF" min="-50" max="50" value="0"/></td><td id="gainvalFilter"></td></tr>
+            </table>
         </div>
     </div>
     <script src="main.js"></script>

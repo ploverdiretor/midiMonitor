@@ -21,7 +21,10 @@ body {
   width:470px; 
   margin: 5px;
 }
-
+.field02{
+  width:480px; 
+  margin: 20px;
+}
 .midi-status { 
   font-weight: bold; 
 }
@@ -29,7 +32,7 @@ body {
   margin-top: 10px; 
   padding: 5px; 
   border: 1px solid #ccc; 
-  height: 500px; 
+  height: 200px; 
   overflow-y: scroll; 
   background-color: #f9f9f9; 
   width:460px;

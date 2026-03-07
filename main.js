@@ -40,6 +40,7 @@ let voice = ['OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','
 let voiceEnv = ['OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF','OFF']
 let voiceFreq = [440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440]
 let voiceGain = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+let vcaLevel = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 for(let i=0;i<16;i++){
   const index = 'voice'+i
   document.getElementById(index).innerHTML = voice[i]
@@ -92,10 +93,12 @@ function handleMIDIMessage(event) {
           if(voice[i]===data[1]){
             voiceEnv[i]='OFF'
             voiceGain[i]=0;
+            vcaLevel[i]=0
             document.getElementById('env'+i+'val').innerHTML = 'OFF'
             document.getElementById('note'+i+'val').innerHTML = 'OFF'
             document.getElementById('voice'+i).innerHTML = voice[i] = 'OFF'
             Setup()
+            SetupVCO()
             break;
           }
         }
@@ -113,9 +116,12 @@ function handleMIDIMessage(event) {
           let midiNoteValue = parseInt(data[1])-21
           voiceFreq[i] = keyTable[midiNoteValue].toFixed(2);
           voiceGain[i]=1;
+          vcaLevel[i]=1
           osc[i].frequency.value = voiceFreq[i];
+          vco[i].frequency.value = voiceFreq[i];
           Setup()
           SetupWave(i);
+          SetupVCO()
           break;
         }
       }

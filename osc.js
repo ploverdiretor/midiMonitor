@@ -3,9 +3,13 @@
   const audioctx = new AudioContext();
   var osc = []
   var gain = []
+  var vco = []
+  var vca = []
   for (let i=0;i<16;i++){
     osc[i] = new OscillatorNode(audioctx);
     gain[i] = new GainNode(audioctx);
+    vco[i] = new OscillatorNode(audioctx);
+    vca[i] = new GainNode(audioctx);
   }
   const tablen = 8;
   const real = new Float32Array(tablen);
@@ -15,14 +19,16 @@
   const master = new GainNode(audioctx);
   
   /*-----------------------------接続------------------------------*/
-  osc[0].connect(gain[0]).connect(master).connect(audioctx.destination);
-  for (let i=1;i<16;i++){
+  for (let i=0;i<16;i++){
     osc[i].connect(gain[i]).connect(master)
+    vco[i].connect(vca[i]).connect(master)
   }
+  master.connect(audioctx.destination);
   /*-----------------------------初期化------------------------------*/
   audioctx.suspend();
   for (let i=0;i<16;i++){
     osc[i].start();
+    vco[i].start();
   }
   document.getElementById("stop").addEventListener("click", ()=>{
     audioctx.suspend();
@@ -44,12 +50,13 @@
   document.getElementById("master").addEventListener("input", Setup);
   for (let i=0;i<16;i++){
     osc[i].frequency.value = voiceFreq[i];
+    vco[i].frequency.value = voiceFreq[i];
   }
-  Setup();
   for (let j=0;j<16;j++){
     SetupWave(j);
   }
-  audioctx.resume();
+  Setup();
+  SetupVCO();
   /*-----------------------------セットアップ------------------------------*/
   function Setup(){
     for (let i=0;i<16;i++){
@@ -58,6 +65,13 @@
     master.gain.value = document.getElementById("masterval").innerHTML
       = document.getElementById("master").value;
   }
+  function SetupVCO() {
+    var type = document.getElementById("type").value;
+    for (let i=0;i<16;i++){
+      vca[i].gain.value = vcaLevel[i];
+      vco[i].type = type;
+    }
+}
   /*-----------------------------ドローバー設定------------------------------*/
   function SetupWave(num){
     for(i = 0; i < tablen; i++) { // make Harmonics
