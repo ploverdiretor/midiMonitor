@@ -42,3 +42,10 @@ body {
   border-bottom: 1px solid #eee; 
   font-size: 12px;
 }
+#waveTable td { 
+  vertical-align: top; /* 上寄せ */
+}
+select {
+  font-family: monospace; 
+  font-size: 12px;
+}

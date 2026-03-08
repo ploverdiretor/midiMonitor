@@ -51,36 +51,61 @@
             <hr width="100%" align="left">
         </div>
         <div class="field02">
-            <table border="0"  width="10%">
-                <tr><th>Master</th><td><input type="range" id="master" min="0" max="1" step="0.01" value="0.2"/></td><td id="masterval"></td></tr>
-                <tr><th><br></th><td></td><td></td></tr>          
-                <tr><th>Harmonics</th><th>imag</th></tr>
-                <tr><th>1</th><td><input type="range" min="0" max="1" step="0.01" id="imag1" value="1"/></td><td id="imag1val"></td></tr>
-                <tr><th>2</th><td><input type="range" min="0" max="1" step="0.01" id="imag2" value="0.5"/></td><td id="imag2val"></td></tr>
-                <tr><th>3</th><td><input type="range" min="0" max="1" step="0.01" id="imag3" value="0"/></td><td id="imag3val"></td></tr>
-                <tr><th>4</th><td><input type="range" min="0" max="1" step="0.01" id="imag4" value="0"/></td><td id="imag4val"></td></tr>
-                <tr><th>5</th><td><input type="range" min="0" max="1" step="0.01" id="imag5" value="0"/></td><td id="imag5val"></td></tr>
-                <tr><th>6</th><td><input type="range" min="0" max="1" step="0.01" id="imag6" value="0"/></td><td id="imag6val"></td></tr>
-                <tr><th>7</th><td><input type="range" min="0" max="1" step="0.01" id="imag7" value="0"/></td><td id="imag7val"></td></tr>
+            <table>
+                <tr><th>Master Volume</th><td><input type="range" id="master" min="0" max="1" step="0.01" value="0.2"/></td><td id="masterval"></td></tr>
             </table>
             <br>
-            <table>
-                <tr><th>Type</th><td>
-                    <select id="type">
-                        <option value="sine">Sine</option>
-                        <option value="square">Square</option>
-                        <option value="sawtooth" checked>SawTooth</option>
-                        <option value="triangle">Triangle</option>
-                    </select>
-                </td></tr>
-            </table>
-            <table>
-                <tr><th>Type</th><td><select id="typeFilter"><option>LPF</option><option>HPF</option><option>BPF</optioin>
-                <option>LowShelf</option><option>HighShelf</option><option>Peaking</option><option>Notch</option><option>AllPass</option>
-                </select></td></tr>
-                <tr><th>Freq</th><td><input type="range" id="freqF" min="100" max="20000" value="5000"/></td><td id="freqvalFilter"></td></tr>
-                <tr><th>Q</th><td><input type="range" id="qF" min="0" max="50" step="0.1" value="5"/></td><td id="qvalFilter"></td></tr>
-                <tr><th>Gain</th><td><input type="range" id="gainF" min="-50" max="50" value="0"/></td><td id="gainvalFilter"></td></tr>
+            <table border="0" width="100%" id="waveTable">
+                <tr>
+                    <td width="50%">
+                        <h3>Additive Synthesis</h3>
+                        <table>        
+                            <tr><th>Harmonics</th><th>imag</th></tr>
+                            <tr><th>1</th><td><input type="range" min="0" max="1" step="0.01" id="imag1" value="0"/></td><td id="imag1val"></td></tr>
+                            <tr><th>2</th><td><input type="range" min="0" max="1" step="0.01" id="imag2" value="0"/></td><td id="imag2val"></td></tr>
+                            <tr><th>3</th><td><input type="range" min="0" max="1" step="0.01" id="imag3" value="0"/></td><td id="imag3val"></td></tr>
+                            <tr><th>4</th><td><input type="range" min="0" max="1" step="0.01" id="imag4" value="0"/></td><td id="imag4val"></td></tr>
+                            <tr><th>5</th><td><input type="range" min="0" max="1" step="0.01" id="imag5" value="0"/></td><td id="imag5val"></td></tr>
+                            <tr><th>6</th><td><input type="range" min="0" max="1" step="0.01" id="imag6" value="0"/></td><td id="imag6val"></td></tr>
+                            <tr><th>7</th><td><input type="range" min="0" max="1" step="0.01" id="imag7" value="0"/></td><td id="imag7val"></td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <h3>Subtractive Synthesis</h3>
+                        <table>
+                            <tr>
+                                <th>Wave Perameter</th>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr><th>Type</th><td>
+                                <select id="type">
+                                    <option value="sine">Sine</option>
+                                    <option value="square">Square</option>
+                                    <option value="sawtooth" checked>SawTooth</option>
+                                    <option value="triangle">Triangle</option>
+                                </select>
+                            </td></tr>
+                        </table>
+                        <table>
+                            <tr><th>Gain</th><td><input type="range" id="vcaGain" min="0" max="1" step="0.01" value="0.2"/></td><td id="vcaVal"></td></tr>
+                        </table>
+                        <br>
+                        <table>
+                            <tr>
+                                <th>Filter</th>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr><th>Type</th><td><select id="typeFilter"><option>LPF</option><option>HPF</option><option>BPF</optioin>
+                            <option>LowShelf</option><option>HighShelf</option><option>Peaking</option><option>Notch</option><option>AllPass</option>
+                            </select></td></tr>
+                            <tr><th>Freq</th><td><input type="range" id="freqF" min="100" max="20000" value="5000"/></td><td id="freqvalFilter"></td></tr>
+                            <tr><th>Q</th><td><input type="range" id="qF" min="0" max="50" step="0.1" value="5"/></td><td id="qvalFilter"></td></tr>
+                            <tr><th>Gain</th><td><input type="range" id="gainF" min="-50" max="50" value="0"/></td><td id="gainvalFilter"></td></tr>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
