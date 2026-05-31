@@ -66,7 +66,7 @@ function handleMIDIMessage(event) {
       midiText = 'Note Off('+noteNum[data[1]]+') velo:'+data[2].toString(10).padStart(3,'0')
       break
     case 0x09:
-      midiNoteValue = parseInt(data[1])-21
+  //    midiNoteValue = parseInt(data[1])-21
       midiText = 'Note On ('+noteNum[data[1]]+') velo:'+data[2].toString(10).padStart(3,'0')//+' freq:'+keyTable[midiNoteValue].toFixed(2)
       break
     case 0x0a:
